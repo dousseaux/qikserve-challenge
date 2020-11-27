@@ -1,5 +1,5 @@
 # Session configuration
-Rails.application.config.session_store :cookie_store, expire_after: 90.days, key: 'preoday_challenge'
+Rails.application.config.session_store :cookie_store, expire_after: 90.days, key: 'qikserve_challenge'
 
 # Specify a serializer for the signed and encrypted cookie jars.
 # Valid options are :json, :marshal, and :hybrid.

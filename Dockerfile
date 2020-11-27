@@ -10,7 +10,7 @@ RUN sed -i ~/.profile -e "s/mesg n || true/tty -s \&\& mesg n/g"
 
 # Install dependencies
 RUN apt update && apt upgrade -y
-RUN apt install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev git nodejs curl
+RUN apt install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm5 libgdbm-dev git nodejs curl default-jre
 
 # Install Ruby
 RUN git clone https://github.com/rbenv/rbenv.git ~/.rbenv
@@ -23,9 +23,14 @@ RUN source ~/.profile && rbenv global 2.6.3
 RUN echo "gem: --no-document" > ~/.gemrc
 RUN source ~/.profile && gem install bundler
 
+# Install gems
+WORKDIR /app
+COPY ./Gemfile /app/
+COPY ./Gemfile.lock /app/
+RUN source ~/.profile && bundle install
+
 # Expose port 3000 and start Rails server
 EXPOSE 3000
 
-# Start everything
-WORKDIR /app
-ENTRYPOINT ls /app > /dev/null && /app/entrypoint.sh
+# Start
+ENTRYPOINT ["bash", "/app/entrypoint.sh"]
