@@ -19,7 +19,7 @@
                                 %tr
                                     %td.pl-3
                                         .row.gutter-1
-                                            .col-12.font-weight-accent.text-primary.fs-18= product.name
+                                            .col-12.font-weight-accent.text-primary.fs-18= "#{product.quantity}x #{product.name}"
                                             .col-md-4.font-weight-bold.fs-14
                                                 %span.text-gray-500 UNIT PRICE:
                                                 %span.text-gray-700= price_str(product.price / 100)
