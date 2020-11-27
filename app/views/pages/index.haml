@@ -43,7 +43,7 @@
                                 %tr
                                     %td.pl-3.text-left
                                         .text-primary.font-weight-accent.fs-18= product.name
-                                        %span.font-weight-bold.text-gray-500.fs-14= price_str(product.price / 100)
+                                        %span.font-weight-bold.text-gray-500.fs-14= price_str(product.price / 100.0)
                                     %td.pr-3.text-right
                                         .add-to-cart.btn.btn-xs.btn-with-icon.btn-primary.font-weight-accent(data-product-id="#{product.id}" data-product-name="#{product.name}" data-product-price="#{price_str(product.price / 100)}")
                                             %i.fa.fa-cart-plus.icon

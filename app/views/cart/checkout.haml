@@ -22,13 +22,13 @@
                                             .col-12.font-weight-accent.text-primary.fs-18= "#{product.quantity}x #{product.name}"
                                             .col-md-4.font-weight-bold.fs-14
                                                 %span.text-gray-500 UNIT PRICE:
-                                                %span.text-gray-700= price_str(product.price / 100)
+                                                %span.text-gray-700= price_str(product.price / 100.0)
                                             .col-md-4.font-weight-bold.fs-14
                                                 %span.text-gray-500 TOTAL DISCOUNT:
-                                                %span.text-gray-700= price_str(product.discount / 100)
+                                                %span.text-gray-700= price_str(product.discount / 100.0)
                                             .col-md-4.font-weight-bold.fs-14
                                                 %span.text-gray-500 TOTAL PRICE:
-                                                %span.text-gray-700= price_str(product.price_liquid / 100)
+                                                %span.text-gray-700= price_str(product.price_liquid / 100.0)
 
         .col-12
             .dashbox
@@ -40,10 +40,10 @@
                     .row.gutter-2.fs-18
 
                         .col-6.col-md-3.text-gray-700 TOTAL PRICE:
-                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total / 100)
+                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total / 100.0)
 
                         .col-6.col-md-3.text-gray-700 YOU SAVED:
-                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total_promos / 100)
+                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total_promos / 100.0)
 
                         .col-6.col-md-3.text-gray-700 AMOUNT DUE:
-                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total_payables / 100)
+                        .col-6.col-md-9.text-primary.font-weight-accent= price_str(@cart.total_payables / 100.0)
