@@ -10,14 +10,23 @@
 
     .sidebar-spacer
 
-    // ################### HOME
+    // ################### DASHBOARD
     - nav_item_class = 'nav-item'
-    - unless current_page?(root_path)
+    - if current_page?(root_path)
         - nav_item_class = nav_item_class + ' active'
     %li(class="#{nav_item_class}")
         = link_to root_path , class: 'nav-link' do
             %i.fa.fa-home
-            Home
+            Dashboard
+
+    // ################### CHECKOUT
+    - nav_item_class = 'nav-item'
+    - if current_page?(cart_checkout_path)
+        - nav_item_class = nav_item_class + ' active'
+    %li(class="#{nav_item_class}")
+        = link_to cart_checkout_path , class: 'nav-link' do
+            %i.fa.fa-credit-card
+            Checkout
 
     .sidebar-spacer
 

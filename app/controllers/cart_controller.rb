@@ -21,4 +21,9 @@ class CartController < ApplicationController
         redirect_to root_path
     end
 
+    def checkout
+        @config[:title] = "Checkout - #{@config[:name]}"
+        @cart = Cart.new(session[:cart])
+    end
+
 end
