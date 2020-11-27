@@ -10,6 +10,30 @@
             .dashbox
                 .dashbox-title
                     %div
+                        %i.fa.fa-shopping-cart.mr-2
+                        Cart
+                .dashbox-body.p-0
+                    - if @cart.products.blank?
+                        .px-3.py-4.text-center YOUR CART IS EMPTY!
+                    - else
+                        %table.table.table-sm.table-break-word.mb-0
+                            %tbody
+                                - @cart.products.each do |product|
+                                    %tr
+                                        %td.pl-3.text-left= "#{product.quantity}x #{product.name}"
+                                        %td.pr-3.text-right
+                                            = link_to cart_item_path(id: product.id), method: :delete, class: 'btn btn-xs btn-with-icon btn-outline-danger font-weight-accent are-you-sure', 'data-confirm': 'Are you sure you want to remove this item?' do
+                                                %i.fa.fa-trash.icon
+                                                REMOVE
+                                %tr
+                                    %td.px-3.text-center(colspan="2")
+                                        = link_to cart_checkout_path, class: 'btn btn-sm btn-with-icon btn-primary' do
+                                            %i.fa.fa-credit-card.icon
+                                            PROCEED TO CHECKOUT
+        .col-12
+            .dashbox
+                .dashbox-title
+                    %div
                         %i.fa.fa-cubes.mr-2
                         Products
                 .dashbox-body.p-0
@@ -21,6 +45,34 @@
                                         .text-primary.font-weight-accent.fs-18= product.name
                                         %span.font-weight-bold.text-gray-500.fs-14= price_str(product.price / 100)
                                     %td.pr-3.text-right
-                                        .btn.btn-xs.btn-with-icon.btn-primary.text-uppercase.font-weight-accent
+                                        .add-to-cart.btn.btn-xs.btn-with-icon.btn-primary.font-weight-accent(data-product-id="#{product.id}" data-product-name="#{product.name}" data-product-price="#{price_str(product.price / 100)}")
                                             %i.fa.fa-cart-plus.icon
                                             ADD TO CART
+
+
+.modal.fade#add-cart-modal(role="dialog")
+    .modal-dialog.modal-dialog-centered
+        .modal-content.bg-gradient-gray-100
+            .modal-header.pb-0.px-3
+                %h5.font-weight-accent.mb-0 Add To Cart
+                .close.fs-24.text-gray-600(data-dismiss="modal") &times;
+            .modal-body.pt-2.px-3
+                = simple_form_for :product, url: cart_path, html: {class: 'dux-validate form-with-borders'} do |f|
+                    .row.gutter-1
+                        .d-none= f.input :id, as: :hidden
+                        .col-12.col-md-8
+                            .text-gray-500.fs-10.font-weight-bold PRODUCT
+                            #cart-product-name.fs-16 -
+                        .col-12.col-md-4
+                            .text-gray-500.fs-10.font-weight-bold PRICE
+                            #cart-product-price.fs-16 -
+                        .col-12.col-md-4= f.input :qtt, placeholder: '0.00', label: 'Quantity', as: :decimal, input_html: {'data-validate': 'required'}, required: false
+                        .w-100
+                        .col-6
+                            .btn.btn-sm.btn-block.btn-gray-200.btn-with-icon.pr-md-5.pl-md-6(data-dismiss="modal")
+                                %i.fa.fa-times.icon
+                                CANCEL
+                        .col-6
+                            %button.btn.btn-sm.btn-block.btn-primary.btn-with-icon.pr-md-5.pl-md-6
+                                %i.fa.fa-cart-plus.icon
+                                ADD
