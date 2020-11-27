@@ -15,7 +15,7 @@ There is a WireMock server with a few API mappings to retrieve production inform
 ## How To Run
 
 The solution is built on top of Ruby on Rails and is setup to run with docker.
-**The following script must be executed from the project root path!**
+**The following scripts must be executed from the project root path!**
 
 Setup the container. This can take a while for the first time:
 
@@ -56,7 +56,7 @@ more). I also would review and refactor the unit tests, probably they are missin
 
 **How would you improve the product APIs that you had to consume?**
 
-For sure I would add a promotion endpoint to list all the promotions available. Also it would be cool to list products by type of
+I would add a promotion endpoint to list all the promotions available, for sure. Also, it would be cool to list products by type of
 promotion. I also would add some filtering and ordering on the product listing.
 
 **What did you find most difficult?**
