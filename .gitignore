@@ -10,3 +10,4 @@
 *.DS_Store
 /static/
 *.keystore
+*.log

@@ -22,12 +22,12 @@
         -############ SIDEBAR
         %div.sidebar-mobile
             .sidebar-toggle
-            = image_tag @config[:logo_mobile]
+            = image_tag @config[:logo_mobile], class: 'img-white'
         %nav.sidebar.sidebar-dark.sidebar-squared.sidebar-comfortable
             .sidebar-close
             .sidebar-content
                 = link_to root_path, class: 'sidebar-logo' do
-                    = image_tag @config[:logo]
+                    = image_tag @config[:logo], class: 'img-white'
                 = render 'sidebar_nav'
 
         -############ MAIN CONTENT

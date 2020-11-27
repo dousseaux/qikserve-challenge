@@ -1,4 +1,26 @@
 .container.py-3
-    .row.gutter-2.justify-content-center
+    .row.gutter-1
+        .col-12.mt-1
+            %h1.h3.font-weight-accent Bem vindo!
+
+        - if any_alerts
+            .col-12.py-0= render 'alerts'
+
         .col-12
-            %h1.h3.font-weight-accent Welcome!
+            .dashbox
+                .dashbox-title
+                    %div
+                        %i.fa.fa-cubes.mr-2
+                        Products
+                .dashbox-body.p-0
+                    %table.table.table-sm.table-break-word.mb-0
+                        %tbody
+                            - @products.each do |product|
+                                %tr
+                                    %td.pl-3.text-left
+                                        .text-primary.font-weight-accent.fs-18= product.name
+                                        %span.font-weight-bold.text-gray-500.fs-14= product.price_str
+                                    %td.pr-3.text-right
+                                        .btn.btn-xs.btn-with-icon.btn-primary.text-uppercase.font-weight-accent
+                                            %i.fa.fa-cart-plus.icon
+                                            ADD TO CART
