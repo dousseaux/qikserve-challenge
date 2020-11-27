@@ -1,0 +1,11 @@
+@import "duxstrap-bundle-min";
+@import "duxdash-bundle-min";
+
+.sidebar .sidebar-content .sidebar-logo {
+    margin-top: 75px !important;
+    margin-bottom: 50px !important;
+
+    img {
+        max-height: 175px !important;
+    }
+}
