@@ -10,7 +10,7 @@ module ApplicationHelper
     # Convert decimal price to string
     def price_str(price)
         if price.present?
-            return "#{'%.2f BRL' % price}"
+            return "#{'USD %.2f' % price}"
         else
             return 'N / A'
         end

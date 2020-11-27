@@ -36,15 +36,6 @@ class Product
     end
 
 
-    def price_str
-        if self.price.present?
-            return "#{'USD %.2f' % self.price}"
-        else
-            return 'N / A'
-        end
-    end
-
-
     def apply_discount(qtt=1)
         self.quantity = qtt
         self.discount = 0
